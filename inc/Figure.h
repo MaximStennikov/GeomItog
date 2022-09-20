@@ -162,7 +162,7 @@ public:
 private:
 	vector <point> m_vertex;
 
-	double SGN(point a, point b, point c) { // Знак ориентированной площади.
+	double SGN(point a, point b, point c) { // Г‡Г­Г ГЄ Г®Г°ГЁГҐГ­ГІГЁГ°Г®ГўГ Г­Г­Г®Г© ГЇГ«Г®Г№Г Г¤ГЁ.
 		float check = (c.x - a.x) * (b.y - a.y) - (b.x - a.x) * (c.y - a.y);
 		if (check > 0) return 1;
 		if (check < 0) return -1;
@@ -183,7 +183,7 @@ bool ccw(point a, point b, point c) {
 	return a.x * (b.y - c.y) + b.x * (c.y - a.y) + c.x * (a.y - b.y) > 0;
 }
 
-void convex_hull(vector<point>& a) { //Алгоритм Грехема
+void convex_hull(vector<point>& a) { //ГЂГ«ГЈГ®Г°ГЁГІГ¬ ГѓГ°ГҐГµГҐГ¬Г 
 	if (a.size() == 1)  return;
 	sort(a.begin(), a.end(), &cmp);
 	point p1 = a[0], p2 = a.back();
@@ -202,7 +202,7 @@ void convex_hull(vector<point>& a) { //Алгоритм Грехема
 			down.push_back(a[i]);
 		}
 	}
-	a.clear(); //Очистка вектора А и заполнение его точками выпуклой оболочки
+	a.clear(); //ГЋГ·ГЁГ±ГІГЄГ  ГўГҐГЄГІГ®Г°Г  ГЂ ГЁ Г§Г ГЇГ®Г«Г­ГҐГ­ГЁГҐ ГҐГЈГ® ГІГ®Г·ГЄГ Г¬ГЁ ГўГ»ГЇГіГЄГ«Г®Г© Г®ГЎГ®Г«Г®Г·ГЄГЁ
 	for (size_t i = 0; i < up.size(); ++i) 
 		a.push_back(up[i]);
 	for (size_t i = down.size() - 2; i > 0; --i)
