@@ -24,20 +24,20 @@ public:
         m_b = b;
     }
 
-    bool intersect_1(float a, float b, float c, float d) { //Âñïîìîãàòåëüíàÿ ôóíêöèÿ äëÿ ïåðñå÷åíèÿ
+    bool intersect_1(float a, float b, float c, float d) { //Ã‚Ã±Ã¯Ã®Ã¬Ã®Ã£Ã Ã²Ã¥Ã«Ã¼Ã­Ã Ã¿ Ã´Ã³Ã­ÃªÃ¶Ã¨Ã¿ Ã¤Ã«Ã¿ Ã¯Ã¥Ã°Ã±Ã¥Ã·Ã¥Ã­Ã¨Ã¿
         if (a > b)  swap(a, b);
         if (c > d)  swap(c, d);
         return max(a, c) <= min(b, d);
     }
 
-    bool Cross_B(Segment n) { //Àëüòåðíàòèâíàÿ ôóíêöèÿ ïåðåñå÷åíèÿ îòðåçêîâ
+    bool Cross_B(Segment n) { //Ã€Ã«Ã¼Ã²Ã¥Ã°Ã­Ã Ã²Ã¨Ã¢Ã­Ã Ã¿ Ã´Ã³Ã­ÃªÃ¶Ã¨Ã¿ Ã¯Ã¥Ã°Ã¥Ã±Ã¥Ã·Ã¥Ã­Ã¨Ã¿ Ã®Ã²Ã°Ã¥Ã§ÃªÃ®Ã¢
         return intersect_1(m_a.x, m_b.x, n.m_a.x, n.m_b.x)
             && intersect_1(m_a.y, m_b.y, n.m_a.y, n.m_b.y)
             && SGN(m_a, m_b, n.m_a) * SGN(m_a, m_b, n.m_b) <= 0
             && SGN(n.m_a, n.m_b, m_a) * SGN(n.m_a, n.m_b, m_b) <= 0;
     }
 
-    bool Cross(Segment n, Segment m, point c) { //Ïåðåñå÷åíèå îòðåçêîâ ïðè ïîìîùè âåêòîðîâ
+    bool Cross(Segment n, Segment m, point c) { //ÃÃ¥Ã°Ã¥Ã±Ã¥Ã·Ã¥Ã­Ã¨Ã¥ Ã®Ã²Ã°Ã¥Ã§ÃªÃ®Ã¢ Ã¯Ã°Ã¨ Ã¯Ã®Ã¬Ã®Ã¹Ã¨ Ã¢Ã¥ÃªÃ²Ã®Ã°Ã®Ã¢
         float k;
         if (n.m_b.y - n.m_a.y != 0) {  
             float q = (n.m_b.x - n.m_a.x) / (n.m_a.y - n.m_b.y);
@@ -58,7 +58,7 @@ public:
         return 1;
     }
 
-    bool Point_Cross(point a) { //Ïðîâåðêà ïðèíàäëåæíîñòè òî÷êè ê îòðåçêó
+    bool Point_Cross(point a) { //ÃÃ°Ã®Ã¢Ã¥Ã°ÃªÃ  Ã¯Ã°Ã¨Ã­Ã Ã¤Ã«Ã¥Ã¦Ã­Ã®Ã±Ã²Ã¨ Ã²Ã®Ã·ÃªÃ¨ Ãª Ã®Ã²Ã°Ã¥Ã§ÃªÃ³
         float check1 = (a.x - m_a.x) * (m_b.y - m_a.y);
         float check2 = (m_b.x - m_a.x) * (a.y - m_a.y);
         if (check1 == check2)
@@ -75,7 +75,7 @@ public:
 
 protected:
     point m_a, m_b;
-    double SGN(point a, point b, point c) { // Çíàê îðèåíòèðîâàííîé ïëîùàäè.
+    double SGN(point a, point b, point c) { // Ã‡Ã­Ã Ãª Ã®Ã°Ã¨Ã¥Ã­Ã²Ã¨Ã°Ã®Ã¢Ã Ã­Ã­Ã®Ã© Ã¯Ã«Ã®Ã¹Ã Ã¤Ã¨.
         float check = (c.x - a.x) * (b.y - a.y) - (b.x - a.x) * (c.y - a.y);
         if (check > 0) return 1;
         if (check < 0) return -1;
